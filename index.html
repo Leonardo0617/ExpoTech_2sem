@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Utilidades</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Área de trabalho: ícones, janelas e boas-vindas ficam aqui dentro -->
+<div id="desk">
+  <div id="icones"></div>
+  <div id="boasvindas"><div id="bv-sau">Olá!</div><div id="bv-hora">--:--</div><div id="bv-data"></div></div>
+</div>
+
+<!-- Menu iniciar -->
+<div id="menu-iniciar" hidden>
+  <input id="busca" type="search" placeholder="Pesquisar aplicativos" autocomplete="off">
+  <div class="mi-titulo">Aplicativos</div>
+  <div id="mi-lista"></div>
+  <div class="mi-rodape"><span>👤 Estudante</span><button id="desligar" title="Desligar">⏻</button></div>
+</div>
+
+<div id="calendario" hidden></div>
+
+<!-- Barra de tarefas -->
+<footer id="taskbar">
+  <div></div>
+  <div id="tb-apps"><button id="btn-iniciar" title="Iniciar"><span class="logo"><i></i><i></i><i></i><i></i></span></button></div>
+  <div id="bandeja">
+    <button id="relogio-bar" title="Calendário"><span id="tb-hora"></span><span id="tb-data"></span></button>
+    <button id="mostrar-desk" title="Mostrar área de trabalho"></button>
+  </div>
+</footer>
+
+<div id="tela-off" hidden><p>Computador desligado</p><small>Clique ou pressione uma tecla para ligar</small></div>
+
+<!-- Conteúdo dos aplicativos (o JavaScript move cada bloco para dentro da sua janela) -->
+<div id="corpos">
+
+  <div data-corpo="calc">
+    <div class="visor"><small id="c-exp"></small><div id="c-val">0</div></div>
+    <div id="c-teclas"></div>
+    <div class="linha sp hh"><b>Histórico</b><button id="c-lh" class="b">Limpar</button></div>
+    <ul id="c-hist"></ul>
+  </div>
+
+  <div data-corpo="tarefas">
+    <div class="linha"><input id="t-texto" placeholder="Nova tarefa" maxlength="120" autocomplete="off"><button id="t-add" class="b p">Cadastrar</button></div>
+    <p id="t-erro" class="erro"></p>
+    <div class="linha sp"><b id="t-cont"></b><button id="t-lc" class="b">Remover concluídas</button></div>
+    <ul id="t-lista"></ul>
+    <p id="t-vazio" class="suave">Nenhuma tarefa cadastrada.</p>
+  </div>
+
+  <div data-corpo="notas">
+    <div class="linha"><select id="n-sel"></select><button id="n-novo" class="b">Novo</button><button id="n-salvar" class="b p">Salvar</button><button id="n-limpar" class="b">Limpar</button></div>
+    <textarea id="n-txt" placeholder="Digite sua anotação aqui..."></textarea>
+    <div id="n-status" class="suave">Pronto</div>
+  </div>
+
+  <div data-corpo="conversor">
+    <label for="cv-v">Valor</label>
+    <input id="cv-v" inputmode="decimal" placeholder="Ex.: 25" autocomplete="off">
+    <label for="cv-u">Converter de</label>
+    <select id="cv-u"><option value="C">Celsius → Fahrenheit</option><option value="F">Fahrenheit → Celsius</option></select>
+    <button id="cv-b" class="b p">Converter</button>
+    <div id="cv-r" class="res">O resultado aparece aqui.</div>
+  </div>
+
+  <div data-corpo="arquivos">
+    <div class="linha"><button id="f-sobe" class="b">↑ Subir</button><button id="f-abre" class="b">Abrir</button><button id="f-del" class="b">Excluir</button><input id="f-nome" placeholder="Nome da nova pasta" maxlength="30"><button id="f-nova" class="b p">Nova pasta</button></div>
+    <div id="f-end"></div>
+    <p id="f-erro" class="erro"></p>
+    <div class="fs"><nav id="f-lat"></nav><div id="f-lista"></div></div>
+  </div>
+
+  <div data-corpo="relogio">
+    <div class="abas"><button data-aba="r-hora" class="on">Relógio</button><button data-aba="r-crono">Cronômetro</button><button data-aba="r-temp">Temporizador</button></div>
+    <div id="r-hora" class="aba"><div class="grande" id="r-h">--:--:--</div><div id="r-d" class="suave"></div></div>
+    <div id="r-crono" class="aba" hidden><div class="grande" id="cr-v">00:00:00.0</div><div class="linha c"><button id="cr-ini" class="b p">Iniciar</button><button id="cr-rst" class="b">Zerar</button></div></div>
+    <div id="r-temp" class="aba" hidden>
+      <div class="grande" id="tp-v">05:00</div>
+      <div class="linha c"><input id="tp-m" type="number" min="0" max="99" value="5" aria-label="Minutos"> min <input id="tp-s" type="number" min="0" max="59" value="0" aria-label="Segundos"> s</div>
+      <div class="linha c"><button id="tp-ini" class="b p">Iniciar</button><button id="tp-rst" class="b">Reiniciar</button></div>
+      <p id="tp-msg" class="c"></p>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
